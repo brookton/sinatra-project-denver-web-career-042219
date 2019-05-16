@@ -66,7 +66,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   annotate
+  pry
   pry-byebug
+  rack
   rake
   require_all
   shotgun

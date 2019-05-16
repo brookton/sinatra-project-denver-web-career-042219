@@ -1,0 +1,49 @@
+<a href ="/restaurants/new">Add a Restaurant</a>
+<a href ="/users/new">Add a User</a>
+<a href ="/restaurants">See all Restaurants</a>
+<a href ="/users">See all Users</a>
+<% require 'pry' %>
+    <p><b> Restaurant: </b> <%= @restaurant.name %></p>
+    <p><b> Rating:  </b><%= @restaurant.rating %> stars </p>
+    <p><b> Address: </b><%= @restaurant.address %></p>
+    <br>
+    <p><b>People Who Want To Try:</b></p>
+
+      <% arr = [] %>
+      <% @review.each do |review| %>
+        <% if review.restaurant_id == @restaurant.id %>
+           <% arr << review.user_id %>
+        <% end %>
+        <% arr %>
+        <% end %>
+        <% @user.each do |user| %>
+        <% #binding.pry %>
+        <% if arr.include?(user.id) %>
+           <li><a href='/users/<%= user.id%>'><%= user.name%></a></li>
+        <% end %>
+        <% end %>
+      <br><% #binding.pry %>
+      <br>
+
+
+    <p><b>Add to list of Restaurants to Try:</b></p>
+
+
+
+    <form action="/restaurants/<%= @restaurant.id %>" method="POST">
+      <label for="User">User</label>
+      <select name="user_id" id="user" value="<%= @user.ids %>">
+        <% #binding.pry %>
+        <% @user.each do |user| %>
+          <option value="<%= user.id %>">
+            <%= user.name %> </option>
+        <% end %>
+      </select>
+      <input type="submit" value="Submit" />
+      <input type="hidden" name="_method" value="PUT" />
+    </form>
+
+    <form action="/restaurants/<%= @restaurant.id %>" method="POST">
+      <input type="submit" value="Delete this Restaurant" />
+      <input type="hidden" name="_method" value="DELETE" />
+    </form>

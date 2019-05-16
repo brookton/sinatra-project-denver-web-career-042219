@@ -1,0 +1,18 @@
+<a href ="/restaurants/new">Add a Restaurant</a>
+<a href ="/users/new">Add a User</a>
+<a href ="/restaurants">See all Restaurants</a>
+<a href ="/users">See all Users</a>
+
+<% require 'pry'%>
+
+<h1>Users</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href="<%="/users/#{user.id}"%>"><%= user.name %></a>
+    </li>
+  <% end %>
+</ul>
+
+  <% #binding.pry %>
+</ul>

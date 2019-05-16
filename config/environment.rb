@@ -12,3 +12,5 @@ require 'yelp/fusion'
 configuration = Yelp::Fusion.client.configure do |config|
   config.api_key = API_KEY
 end
+
+client = Yelp::Fusion::Client.new(API_KEY)

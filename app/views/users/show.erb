@@ -1,0 +1,28 @@
+<a href ="/restaurants/new">Add a Restaurant</a>
+<a href ="/users/new">Add a User</a>
+<a href ="/restaurants">See all Restaurants</a>
+<a href ="/users">See all Users</a>
+
+    <h4> User </h4>
+    <li>   <%= @user.name %> </li>
+    <h4> Restaurants <%= @user.name %> Wants to Try</h4>
+
+    <% arr = [] %>
+    <% @review.each do |review| %>
+      <% if review.user_id == @user.id %>
+         <% arr << review.restaurant_id %>
+      <% end %>
+      <% arr %>
+      <% end %>
+      <% @restaurant.each do |restaurant| %>
+      <% if arr.include?(restaurant.id) %>
+        <% #binding.pry %>
+         <li><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name%></a></li>
+      <% end %>
+      <% end %>
+    <br><% #binding.pry %>
+    <br>
+    <form action="/users/<%= @user.id %>" method="POST">
+      <input type="submit" value="Delete this User" />
+      <input type="hidden" name="_method" value="DELETE" />
+    </form>

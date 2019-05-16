@@ -1,0 +1,42 @@
+<a href ="/restaurants/new">Add a Restaurant</a>
+<a href ="/users/new">Add a User</a>
+<a href ="/restaurants">See all Restaurants</a>
+<a href ="/users">See all Users</a>
+
+<% require 'pry'%>
+
+<h1>Restaurants</h1>
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <a href="<%="/restaurants/#{restaurant.id}"%>"><%= restaurant.name %></a>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Users</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href="<%="/users/#{user.id}"%>"><%= user.name %></a>
+    </li>
+  <% end %>
+</ul>
+
+<% if false %>
+<h1>Reviews</h1>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.rating %> stars by
+      <% @users.each do |user| %>
+          <% if user.id == review.user_id %>
+                <b> <%= user.name%></b>
+            <% end %>
+        <%  end %>
+    </li>
+  <% end %>
+
+  <% #binding.pry %>
+</ul>
+<% end %>
